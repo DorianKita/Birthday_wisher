@@ -1,19 +1,29 @@
 # import smtplib
+import random
+import datetime
+import smtplib
+
 #
-# my_email = "abecadlo@gmail.com"
-# password = "venxft233asdv"
+my_email = "abecadlo@gmail.com"
+password = "venxft233asdv"
 #
 # with smtplib.SMTP("smtp.gmail.com") as connection:
 #     connection.starttls()
 #     connection.login(user=my_email, password=password)
 #     connection.sendmail(from_addr=my_email,to_addrs="testing@yahoo.com", msg="Subject: Testing\n\nThis is testing message.")
 
-import datetime as dt
+with open("quotes.txt") as quotes:
+    list_of_quotes = quotes.readlines()
+    random_quote = random.choice(list_of_quotes)
 
-date = dt.datetime.now()
-year = date.tzinfo
-# print(year)
+date = datetime.datetime.now()
+day = date.weekday()
 
-date_of_birth = dt.datetime(year=1990, month=1, day=22)
-print(date_of_birth)
+if day == 3:
+    with smtplib.SMTP("smtp.gmail.com") as connection:
+        connection.starttls()
+        connection.login(user=my_email, password=password)
+        connection.sendmail(from_addr=my_email, to_addrs="testing@yahoo.com", msg=f"Subject:Hello\n\n{random_quote}")
+    print(random_quote)
+
 
