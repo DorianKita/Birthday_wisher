@@ -1,29 +1,13 @@
-# import smtplib
-import random
-import datetime
-import smtplib
+##################### Extra Hard Starting Project ######################
 
-#
-my_email = "abecadlo@gmail.com"
-password = "venxft233asdv"
-#
-# with smtplib.SMTP("smtp.gmail.com") as connection:
-#     connection.starttls()
-#     connection.login(user=my_email, password=password)
-#     connection.sendmail(from_addr=my_email,to_addrs="testing@yahoo.com", msg="Subject: Testing\n\nThis is testing message.")
+# 1. Update the birthdays.csv
 
-with open("quotes.txt") as quotes:
-    list_of_quotes = quotes.readlines()
-    random_quote = random.choice(list_of_quotes)
+# 2. Check if today matches a birthday in the birthdays.csv
 
-date = datetime.datetime.now()
-day = date.weekday()
+# 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
 
-if day == 3:
-    with smtplib.SMTP("smtp.gmail.com") as connection:
-        connection.starttls()
-        connection.login(user=my_email, password=password)
-        connection.sendmail(from_addr=my_email, to_addrs="testing@yahoo.com", msg=f"Subject:Hello\n\n{random_quote}")
-    print(random_quote)
+# 4. Send the letter generated in step 3 to that person's email address.
+
+
 
 
